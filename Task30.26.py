@@ -8,7 +8,7 @@ if img is None :
 
 
 img_gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-hist=cv2.calcHist(img_gray,[0],None,[256],[0,256])
+hist=cv2.calcHist([img_gray],[0],None,[256],[0,256])
 plt.plot(hist.flatten(),color='red')
 plt.title("Histogram")
 plt.xlabel("Intensity")
