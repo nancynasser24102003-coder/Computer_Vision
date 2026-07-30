@@ -25,9 +25,9 @@ def diagnose(img_gray):
 
 
 
-hist_Dark=cv2.calcHist(img_Dark_togray,[0],None,[256],[0,256])
-hist_Bright=cv2.calcHist(img_Bright_togray,[0],None,[256],[0,256])
-hist_Normal=cv2.calcHist(img_Normal_togray,[0],None,[256],[0,256])
+hist_Dark=cv2.calcHist([img_Dark_togray],[0],None,[256],[0,256])
+hist_Bright=cv2.calcHist([img_Bright_togray],[0],None,[256],[0,256])
+hist_Normal=cv2.calcHist([img_Normal_togray],[0],None,[256],[0,256])
 
 
 fig,axes=plt.subplots(2,3,figsize=(8,8))
