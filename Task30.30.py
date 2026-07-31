@@ -71,6 +71,21 @@ plt.show()
 
 
 
+gray_mean=img_gray.mean()
+Equalized_mean=img_Equalized.mean()
+Clahed_mean=img_Clahed.mean()
+
+
+gray_std=img_gray.std()
+Equalized_std=img_Equalized.std()
+Clahed_std=img_Clahed.std()
+
+
+
+print(f"Gray Image      -> Mean = {gray_mean:.2f}, Std = {gray_std:.2f}")
+print(f"Equalized Image -> Mean = {Equalized_mean:.2f}, Std = {Equalized_std:.2f}")
+print(f"CLAHE Image     -> Mean = {Clahed_mean:.2f}, Std = {Clahed_std:.2f}")
+
 
 
 
