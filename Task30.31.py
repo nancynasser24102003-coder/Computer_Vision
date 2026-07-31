@@ -1,24 +1,26 @@
 import cv2
+import matplotlib.pyplot as plt 
 import numpy as np 
-import matplotlib.pyplot as plt
-import os 
 
-img=cv2.imread(r"C:\Users\Etijah\Desktop\659349064_18576944251041430_2870406156677966472_n-1.jpg")
-img_SizeinHard=os.path.getsize(r"C:\Users\Etijah\Desktop\659349064_18576944251041430_2870406156677966472_n-1.jpg")
-print(f"The Size of Image in Hard :{img_SizeinHard}")
-img_SizeinMemory=img.nbytes
-print(f"The Size of Image in Memory : {img_SizeinMemory}")
-Ratio_SizeinMemorytoHard=img_SizeinMemory/img_SizeinHard
-print(f"The Ratio Between The Size of Image in Memory to in Hard:{Ratio_SizeinHardtoMemory}")
+img=cv2.imread(r"C:\Users\Etijah\Desktop\WhatsApp Image 2026-07-31 at 14.29.00.jpeg")
+if img is None :
+    raise FileNotFoundError("The Image not Loaded ")
+img_gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+Clip_Limit_List=[1.0,2.0,8.0,40.0]
+img_Clahed=[]
 
-if Ratio_SizeinMemorytoHard>1:
-    print("The Size of Image in Memory > The Size of Image in Hard")
-elif Ratio_SizeinMemorytoHard==1:
-    print("The Size of Image in Memory = The Size of Image in Hard")
-else:
-    print("The Size of Image in Memory < The Size of Image in Hard")
+for i in Clip_Limit_List:
+    Clahe=cv2.createCLAHE(clipLimit=i,tileGridSize=(8,8))
+    Result=Clahe.apply(img_gray)
+    img_Clahed.append(Result)
 
-
-if img_SizeinMemory > img_SizeinHard:
-    print("Memory size is larger than file size because the image is decompressed when loaded into RAM.")
+fig,axes=plt.subplots(1,4,figsize=(16,4))
+for ax,ch,name in zip(axes,img_Clahed,['ClipLimit=1.0','ClipLimit=2.0','ClipLimit=8.0','ClipLimit=40.0']):
+    ax.imshow(ch,cmap='gray')
+    ax.set_title(name)
+    ax.axis("off")
+plt.suptitle("CLAHE with Different Clip Limits")
+plt.tight_layout()
+plt.savefig(r"C:\Users\Etijah\Desktop\CVImage\Different_Clip_Limit.png")
+plt.show()
 
