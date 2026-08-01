@@ -29,13 +29,34 @@ while True :
     cv2.imshow("Edges Layer",Combined)
 
 
-    if cv2.waitKey(1) & 0xFF==ord('c'):
+    key=cv2.waitKey(1) & 0xFF
+
+
+    if key==ord('c'):
       break
-    if 0xFF==ord('c'):
+    if key==ord('s'):
         cv2.imwrite(r"C:\Users\Etijah\Desktop\CVImage\Video_Capture.png",Combined)
 
 cap.release()
 cv2.destroyAllWindows()
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
 
 
